@@ -1,5 +1,4 @@
 class BaseConfig():
-   API_PREFIX = '/api'
    TESTING = False
    DEBUG = False
    SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
