@@ -14,9 +14,9 @@ def error_handling(app):
             "error": e.name,
         } 
         
-        if type(e.description) == dict:
+        try:
             data['message'] = e.description['message']
-        else:
+        except:
             data['message'] = e.description
 
         response = Response(response=json.dumps(data), status=e.code, mimetype='application/json')

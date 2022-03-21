@@ -1,7 +1,7 @@
 from flask import Flask
 from error_handling import error_handling
 
-from api.models import db, migrate
+from api.models import db, migrate, ArticleModel, AuthorModel
 from api.routes import root_api
 
 def create_app():
@@ -13,7 +13,6 @@ def create_app():
 
     app.register_blueprint(root_api)  
 
-    
     error_handling(app)
 
     return app

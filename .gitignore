@@ -1,14 +1,20 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/flask,python,visualstudiocode,venv,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=flask,python,visualstudiocode,venv,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/flask,python,visualstudiocode,database
+# Edit at https://www.toptal.com/developers/gitignore?templates=flask,python,visualstudiocode,database
 
-### dotenv ###
-.env
+### Database ###
+*.accdb
+*.db
+*.dbf
+*.mdb
+*.pdb
+*.sqlite3
 
 ### Flask ###
 instance/*
 !instance/.gitignore
 .webassets-cache
+.env
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
@@ -238,18 +244,6 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 
-### venv ###
-# Virtualenv
-# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-pip-selfcheck.json
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -271,4 +265,6 @@ pip-selfcheck.json
 
 # Support for Project snippet scope
 
-# End of https://www.toptal.com/developers/gitignore/api/flask,python,visualstudiocode,venv,dotenv
+/migrations
+
+# End of https://www.toptal.com/developers/gitignore/api/flask,python,visualstudiocode,database
