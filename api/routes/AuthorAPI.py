@@ -90,5 +90,20 @@ def handle_delete_author(id):
     response = Response(response=json.dumps(data), status=HTTPStatus.OK, mimetype='application/json')
     return response
 
+@author_api.route('/<id>/upload', methods=['POST'])
+def handle_upload_file(id):
+    try:
+        author_data = AuthorService.upload(id, request.files)
+    except Exception as e:
+        abort(HTTPStatus.INTERNAL_SERVER_ERROR, {'message': str(e) + ' error uploading file'})
 
+    if author_data is not None and 'empty' in author_data:
+        abort(HTTPStatus.NOT_FOUND, {"message": "author not found"})
+
+    data = {
+        "status": HTTPStatus.OK,
+        "message": "File uploaded",
+    }
+    response = Response(response=json.dumps(data), status=HTTPStatus.OK, mimetype='application/json')
+    return response
 

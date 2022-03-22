@@ -1,5 +1,7 @@
+import os
 from flask import abort
 from ..models import db, AuthorModel
+from werkzeug.utils import secure_filename
 
 
 def get_author(id: int):
@@ -45,5 +47,22 @@ def delete(id: int):
         return data
     db.session.delete(author)
     db.session.commit()
+
+def upload(id:int, request_files:dict):
+    author = AuthorModel.Authors.query.get(id)
+    if author is None:
+        data = {
+            "empty": True
+        }
+        return data
+
+    file = request_files['file']
+    filename = secure_filename(file.filename)
+
+    is_path_exists= os.path.exists(os.getcwd()+f"/files/{id}/")
+    if not is_path_exists:
+        os.mkdir(os.getcwd()+f"/files/{id}/" )
+
+    file.save(os.path.join(os.getcwd()+f"/files/{id}/" + filename))
 
  
