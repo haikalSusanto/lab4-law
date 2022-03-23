@@ -20,6 +20,21 @@ def handle_get_author(id: int):
     }
     response = Response(response=json.dumps(data), status=HTTPStatus.OK, mimetype='application/json')
     return response
+    
+@author_api.route('/all', methods=['GET'])
+def handle_get_all_author():
+    author_data = AuthorService.get_all_author()
+
+    if 'empty' in author_data:
+        abort(404, {"message": "author not found"})
+    
+    data = {
+        "status": HTTPStatus.OK,
+        "message": "Success",
+        "data": author_data
+    }
+    response = Response(response=json.dumps(data), status=HTTPStatus.OK, mimetype='application/json')
+    return response
 
 @author_api.route('/add', methods=['POST'])
 def handle_create_author():
